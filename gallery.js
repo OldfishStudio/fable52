@@ -149,7 +149,10 @@ function renderReferences() {
       const host = url.hostname.replace(/^www\./, "");
       if (!sites.has(host)) sites.set(host, new Map());
       const links = sites.get(host);
-      if (!links.has(url.href)) links.set(url.href, `${game.name} · ${label}`);
+      if (!links.has(url.href)) links.set(url.href, {names: new Set(), labels: new Set()});
+      const reference = links.get(url.href);
+      reference.names.add(game.name);
+      reference.labels.add(label);
     }
   }
 
@@ -158,9 +161,11 @@ function renderReferences() {
     const site = element("details", "");
     const entries = element("ul", "reference-links");
     site.append(element("summary", "", `${host}（${links.size}）`), entries);
-    for (const [url, label] of links) {
+    for (const [url, reference] of links) {
       const entry = element("li", "");
-      entry.append(link(label, url));
+      const names = [...reference.names].join("、");
+      const labels = [...reference.labels].join("、");
+      entry.append(link(`${names} · ${labels}`, url));
       entries.append(entry);
     }
     const item = element("li", "");

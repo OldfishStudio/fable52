@@ -7,7 +7,7 @@ const games = [
     "play": "https://patch.gg/blendi/painted-valley",
     "url": "https://patch.gg/blendi/painted-valley/files",
     "urlLabel": "源码文件",
-    "repoUrl": "https://git.patch.gg/blendi/painted-valley",
+    "repoUrl": "https://patch.gg/blendi/painted-valley/files",
     "remixes": "https://patch.gg/blendi/painted-valley/remixes",
     "image": "https://raw.githubusercontent.com/fengyiqicoder/awesome-fable-5.2/main/assets/gifs/134.gif",
     "imageSource": "https://x.com/BlendiByl/status/2120694003230560585",

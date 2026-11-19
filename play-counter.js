@@ -14,7 +14,9 @@
     const item = labels.get(id);
     if (!item || !Number.isSafeInteger(clicks) || clicks < item.clicks) return;
     item.clicks = clicks;
-    item.label.textContent = "试玩点击 " + format.format(clicks) + " 次";
+    const number = format.format(clicks);
+    item.number.textContent = number;
+    item.label.setAttribute("aria-label", "试玩点击 " + number + " 次");
     item.label.hidden = false;
   }
 
@@ -28,11 +30,24 @@
 
   function attach(link, parent, game) {
     const id = game.counterId ?? game.id ?? game.name.normalize("NFKC").trim().toLowerCase();
-    const label = document.createElement("p");
+    const label = document.createElement("span");
     label.className = "play-click-count";
     label.hidden = true;
+    label.title = "试玩点击次数";
+    label.setAttribute("role", "img");
+
+    const svgNamespace = "http://www.w3.org/2000/svg";
+    const flame = document.createElementNS(svgNamespace, "svg");
+    flame.setAttribute("viewBox", "0 0 24 24");
+    flame.setAttribute("aria-hidden", "true");
+    const shape = document.createElementNS(svgNamespace, "path");
+    shape.setAttribute("d", "M13.2 2.5c.4 4-2.1 5.4-2.9 8.1-1.1-.8-1.6-2-1.5-3.4-2.5 2.2-4.2 4.6-4.2 7.5a7.4 7.4 0 0 0 14.8 0c0-3.9-2.4-7.8-6.2-12.2Zm-1.2 17.2a3 3 0 0 1-3-3c0-1.4.9-2.7 2-3.7.2 1 .6 1.5 1.1 1.9.4-.9 1.2-1.6 1.3-2.8 1.1 1.2 1.6 2.9 1.6 4.6a3 3 0 0 1-3 3Z");
+    flame.append(shape);
+
+    const number = document.createElement("span");
+    label.append(flame, number);
     parent.append(label);
-    labels.set(id, { label, clicks: 0 });
+    labels.set(id, { label, number, clicks: 0 });
 
     const url = new URL(request);
     url.searchParams.set("game", id);

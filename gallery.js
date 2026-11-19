@@ -44,7 +44,11 @@ function cover(game, index) {
       frame.classList.add("has-image");
       caption.remove();
     });
-    image.addEventListener("error", () => image.remove());
+    image.addEventListener("error", () => {
+      image.remove();
+      const failedCard = frame.closest(".card");
+      if (failedCard) list.append(failedCard);
+    }, {once: true});
     image.src = game.image;
     frame.append(image);
   }
@@ -89,18 +93,18 @@ function card(game, index) {
 
   const actions = element("div", "actions");
   const playUrl = game.play || (game.local && (game.url || (repoUrl && repoUrl + "#readme")));
-  if (playUrl) {
-    const play = link("试玩", playUrl);
+  const play = playUrl ? link("试玩", playUrl) : null;
+  if (play) {
     play.className = "pill play";
     if (!game.play) play.title = game.local;
     actions.append(play);
-    playCounter?.attach(play, content, game);
   }
   if (hasOriginalSource(game)) {
     const repository = link("原仓库", repoUrl);
     repository.className = "pill repository";
     actions.append(repository);
   }
+  if (play) playCounter?.attach(play, actions, game);
   article.append(cover(game, index), content, actions);
   return article;
 }
@@ -111,6 +115,7 @@ function hasOriginalSource(game) {
 }
 
 const catalog = [...games].sort((left, right) =>
+  Number(Boolean(right.image)) - Number(Boolean(left.image)) ||
   Number(hasOriginalSource(right)) - Number(hasOriginalSource(left)) ||
   (right.quality ?? 0) - (left.quality ?? 0));
 const cards = catalog.map(card);

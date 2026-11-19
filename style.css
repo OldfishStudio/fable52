@@ -106,4 +106,15 @@ footer { padding: 1rem 0 2rem; border-top: 1px solid var(--line); }
 .reference-sites, .reference-links { overflow-wrap: anywhere; }
 .reference-sites > li { margin-block: .3rem; }
 
-.play-click-count { margin: .45rem 0 0; color: var(--muted); font-size: .75rem; }
+.play-click-count:not([hidden]) {
+  display: inline-flex;
+  align-items: center;
+  align-self: center;
+  gap: .25rem;
+  margin-inline-start: auto;
+  color: var(--muted);
+  font-size: .75rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.play-click-count svg { width: .95rem; height: .95rem; fill: #f5a24d; }

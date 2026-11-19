@@ -6,6 +6,8 @@
   if (!endpoint) return;
 
   const labels = new Map();
+  const lastClick = new Map();
+  const repeatWindow = 2000;
   const format = new Intl.NumberFormat("zh-CN");
   const request = new URL(endpoint);
   request.searchParams.set("gallery", config.dataset.gallery);
@@ -53,6 +55,9 @@
     url.searchParams.set("game", id);
     function record(event) {
       if (event.defaultPrevented) return;
+      const now = performance.now();
+      if (now - (lastClick.get(id) ?? -Infinity) < repeatWindow) return;
+      lastClick.set(id, now);
       fetchCounts(url, "POST").then(data => render(id, data.clicks)).catch(() => {});
     }
     link.addEventListener("click", record);

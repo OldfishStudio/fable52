@@ -29,6 +29,7 @@ main, footer, .masthead { width: min(1320px, 92vw); margin-inline: auto; }
 }
 h1 { font: 700 clamp(26px, 4.2vw, 52px)/1.1 "Barlow Condensed", "Noto Sans SC", sans-serif; margin: 0; letter-spacing: -.02em; }
 h1 em { display: inline-block; font: 900 .74em/1.2 "Noto Sans SC", sans-serif; font-style: normal; color: var(--lime); }
+.catalog-updated { margin: .4rem 0 0; color: var(--muted); font-size: .78rem; }
 .toolbar {
   display: flex; flex-wrap: wrap; align-items: end; gap: .55rem;
   border-block: 1px solid var(--line); padding: .55rem 0;

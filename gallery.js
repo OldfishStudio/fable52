@@ -9,6 +9,7 @@ const list = document.querySelector("#games");
 const search = document.querySelector("#search");
 const filter = document.querySelector("#filter");
 const count = document.querySelector("#count");
+const playCounter = window.galleryPlayCounter;
 
 function element(tag, className, text) {
   const node = document.createElement(tag);
@@ -93,6 +94,7 @@ function card(game, index) {
     play.className = "pill play";
     if (!game.play) play.title = game.local;
     actions.append(play);
+    playCounter?.attach(play, content, game);
   }
   if (hasOriginalSource(game)) {
     const repository = link("原仓库", repoUrl);
@@ -113,6 +115,7 @@ const catalog = [...games].sort((left, right) =>
   (right.quality ?? 0) - (left.quality ?? 0));
 const cards = catalog.map(card);
 list.append(...cards);
+playCounter?.load();
 
 function update() {
   const term = search.value.normalize("NFKC").trim().toLowerCase();

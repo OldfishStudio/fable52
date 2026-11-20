@@ -44,7 +44,11 @@ function cover(game, index) {
       frame.classList.add("has-image");
       caption.remove();
     });
-    image.addEventListener("error", () => image.remove());
+    image.addEventListener("error", () => {
+      image.remove();
+      const failedCard = frame.closest(".card");
+      if (failedCard) list.append(failedCard);
+    }, {once: true});
     image.src = game.image;
     frame.append(image);
   }
@@ -111,6 +115,7 @@ function hasOriginalSource(game) {
 }
 
 const catalog = [...games].sort((left, right) =>
+  Number(Boolean(right.image)) - Number(Boolean(left.image)) ||
   Number(hasOriginalSource(right)) - Number(hasOriginalSource(left)) ||
   (right.quality ?? 0) - (left.quality ?? 0));
 const cards = catalog.map(card);

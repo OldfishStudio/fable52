@@ -1917,7 +1917,8 @@ const games = [
     "added": "2026-11-21",
     "image": "https://raw.githubusercontent.com/Mythfinity/crash-quota-fable/main/assets/cover.webp",
     "imageSource": "https://github.com/Mythfinity/crash-quota-fable/blob/main/assets/cover.webp",
-    "imageLabel": "作者封面"
+    "imageLabel": "作者封面",
+    "authorUrl": "https://github.com/Mythfinity"
   },
   {
     "name": "NIGHTSHIFT: Survive the Midnight",
@@ -1933,7 +1934,8 @@ const games = [
     "imageSource": "https://github.com/EddizEge/nightshift-fable/blob/main/screenshots/final/flow-07-run.jpg",
     "imageLabel": "作者实机截图",
     "license": "MIT",
-    "partialLicense": true
+    "partialLicense": true,
+    "authorUrl": "https://github.com/EddizEge"
   },
   {
     "name": "Mall Action · Fable 5.2 版",
@@ -1947,7 +1949,8 @@ const games = [
     "added": "2026-11-21",
     "image": "https://raw.githubusercontent.com/rlorca/mall-action/fable-5-2/docs/screenshots/mall.png",
     "imageSource": "https://github.com/rlorca/mall-action/blob/fable-5-2/docs/screenshots/mall.png",
-    "imageLabel": "作者实机截图"
+    "imageLabel": "作者实机截图",
+    "authorUrl": "https://github.com/rlorca"
   },
   {
     "name": "LAST LIGHT — Rooftop Run",
@@ -1957,8 +1960,12 @@ const games = [
     "note": "沿高楼屋顶跑跳，在倒计时内抵达终点。同提示词对照实验的 Fable 5.2 版。",
     "play": "https://clockendbader.github.io/model-arena/fable-5.2/parkour/",
     "url": "https://github.com/clockendbader/model-arena/tree/main/fable-5.2/parkour",
-    "source": "single",
-    "added": "2026-11-21"
+    "source": "project",
+    "added": "2026-11-21",
+    "image": "captures/2026-11-21/last-light-rooftop-run.jpg",
+    "imageSource": "https://clockendbader.github.io/model-arena/fable-5.2/parkour/",
+    "imageLabel": "游戏标题画面",
+    "authorUrl": "https://github.com/clockendbader"
   },
   {
     "name": "Space 2601AE",
@@ -1969,7 +1976,11 @@ const games = [
     "local": "安装 .NET SDK 10 与 Node.js，执行 npm install、npm run restore 和 npm run dev",
     "url": "https://github.com/AJankovic234/fable-space-engine#change-log",
     "source": "project",
-    "added": "2026-11-21"
+    "added": "2026-11-21",
+    "image": "https://raw.githubusercontent.com/AJankovic234/fable-space-engine/main/artifacts/sektorflug/flugoptik.jpg",
+    "imageSource": "https://github.com/AJankovic234/fable-space-engine/blob/main/artifacts/sektorflug/flugoptik.jpg",
+    "imageLabel": "作者实机截图",
+    "authorUrl": "https://github.com/AJankovic234"
   },
   {
     "name": "LANTERNFALL",
